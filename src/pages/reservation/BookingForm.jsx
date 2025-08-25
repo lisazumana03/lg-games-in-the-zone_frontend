@@ -46,7 +46,7 @@ function BookingForm() {
             <form onSubmit={handleSubmit} className="bg-red-100 p-8 rounded shadow-md w-full max-w-md">
                 <div className="mb-4">
                     <label> BookingId </label>
-                    <input type="text" name="bookingId" onChange={handleChange} required />
+                    <input type="text" name="bookingId" value={form.bookingId} onChange={handleChange} required />
                 </div>
                 <div className="mb-4">
                     <label> Event Name </label>
