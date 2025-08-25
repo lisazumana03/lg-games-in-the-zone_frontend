@@ -1,0 +1,16 @@
+header {
+  background-color: #015FFF;
+  padding: 2rem;
+}
+
+header h1 {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+header hr {
+  border: 2px solid #f1faee;
+  width: 80%;
+  margin: 1rem auto;
+}
