@@ -7,6 +7,7 @@ import BookingList from "./pages/reservation/BookingList.jsx";
 import GameForm from "./pages/admin/products/GameForm.jsx";
 import Home from "./Home.jsx";
 import BookingHistory from "./pages/reservation/BookingHistory.jsx";
+import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
 
 function BookingHeader() {
     return (
@@ -102,7 +103,7 @@ function AppContent() {
                     <Route path="/booking-history" element={<BookingHistory />} />
                     <Route path="/games" element={<GameList />} />
                     <Route path="/register-game" element={<GameForm/>} />
-                    <Route path="/cars"/>
+                    <Route path="/register-console" element={<ConsoleForm/>} />
                 </Routes>
             </main>
             <Footer />
@@ -118,4 +119,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
