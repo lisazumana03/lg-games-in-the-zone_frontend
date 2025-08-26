@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {create} from "../../service/bookingService.js";
-import './index.css';
 
 function BookingForm() {
     const navigate = useNavigate();

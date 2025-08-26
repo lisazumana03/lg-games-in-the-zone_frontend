@@ -1,5 +1,3 @@
-import './index.css';
-
 function Header(){
     return (
         <header className="bg-primary text-white text-center">
