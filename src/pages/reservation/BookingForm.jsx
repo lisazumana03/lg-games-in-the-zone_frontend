@@ -25,7 +25,7 @@ function BookingForm() {
         event.preventDefault();
         try {
             await create(form);
-            setMessage("Booking made successfully!");
+            setMessage({text: "Booking made successfully!", type: "success" });
             setForm({
                 bookingId: "",
                 eventName: "",
@@ -36,13 +36,18 @@ function BookingForm() {
                 bookingStatus: "PENDING",
             });
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            setMessage({ text: "Something went wrong. Please try again.", type: "danger" });
         }
     }
 
     return (
         <div className="container d-flex flex-column align-items-center justify-content-center min-vh-100">
-            {message && <p className="mb-4 text-green-700 font-semibold">{message}</p>}
+            {message && (
+                <div className="alert alert-success w-100 text-center" role="alert" style={{ maxWidth: "500px" }}>
+                    {message}
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="card p-4 shadow w-100" style={{ maxWidth: "500px" }}>
                 <div className="mb-3">
                     <label> BookingId: </label>
@@ -69,7 +74,7 @@ function BookingForm() {
 
                 <div className="mb-3">
                     <label className="block mb-1 font-semibold">Booking Date & Time</label>
-                    <input type="datetime-local" name="bookingDateAndTime" value={form.bookingDate} onChange={handleChange} required className="w-full px-3 py-2 border rounded"/>
+                    <input type="datetime-local" name="bookingDate" value={form.bookingDate} onChange={handleChange} required className="w-full px-3 py-2 border rounded"/>
                 </div>
                 <div className="mb-3">
                     <label className="block mb-1 font-semibold">Booking Status</label>
@@ -79,7 +84,7 @@ function BookingForm() {
                         <option value="cancelled">Cancelled</option>
                     </select>
                 </div>
-                <div className="flex gap-4">
+                <div className="d-flex flex-row align-items-center justify-content-center text-center text-light gap-3">
                     <button type="submit" className="btn btn-success">Submit</button>
                     <button type="reset" className="btn btn-warning" onClick={() => setForm({
                         bookingId: "",

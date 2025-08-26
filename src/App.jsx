@@ -13,7 +13,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 
 function BookingHeader() {
     return (
-        <header className="bg-primary text-white text-center">
+        <header className="text-white text-center">
             <h1>MAKE YOUR BOOKING</h1>
         </header>
     );

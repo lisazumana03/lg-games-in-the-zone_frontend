@@ -14,3 +14,29 @@ header hr {
   width: 80%;
   margin: 1rem auto;
 }
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #5a00b0, #9d00ff); /* neon purple gradient */
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+}
+
+/* Optional: neon text glow */
+.neon-text {
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.btn-games{
+  background-color: #e87400;
+}
+
+.btn-games:hover {
+  background-color: #ff8000;
+}
+
+.btn-consoles{
+  background-color: #01D5FF;
+}
+
