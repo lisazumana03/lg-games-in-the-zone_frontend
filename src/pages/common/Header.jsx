@@ -1,6 +1,8 @@
+import "./index.css"
+
 function Header(){
     return (
-        <header className="text-center">
+        <header className="bg-primary text-white text-center">
             <h1>WELCOME TO LG'S GAMES IN THE ZONE</h1>
             <hr/>
         </header>

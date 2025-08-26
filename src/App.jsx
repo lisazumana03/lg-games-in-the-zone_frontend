@@ -8,18 +8,19 @@ import GameForm from "./pages/admin/products/GameForm.jsx";
 import Home from "./Home.jsx";
 import BookingHistory from "./pages/reservation/BookingHistory.jsx";
 import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
+import './index.css'
 
 function BookingHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
-            <h1 className="text-2xl font-bold">MAKE YOUR BOOKING</h1>
+        <header className="bg-primary text-white text-center">
+            <h1>MAKE YOUR BOOKING</h1>
         </header>
     );
 }
 
 function BookingHistoryHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
+        <header className="bg-primary text-white text-center">
             <h1 className="text-2xl font-bold">VIEW YOUR BOOKING HISTORY</h1>
         </header>
     );
@@ -27,7 +28,7 @@ function BookingHistoryHeader() {
 
 function GameHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
+        <header className="bg-primary text-white text-center">
             <h1 className="text-2xl font-bold">REGISTER A GAME</h1>
         </header>
     );
@@ -35,24 +36,24 @@ function GameHeader() {
 
 function ConsoleHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
-            <h1 className="text-2xl font-bold">REGISTER A CONSOLE</h1>
+        <header className="bg-primary text-white text-center">
+            <h1>REGISTER A CONSOLE</h1>
         </header>
     )
 }
 
 function GameViewHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
-            <h1 className="text-2xl font-bold">VIEW AVAILABLE GAMES</h1>
+        <header className="bg-primary text-white text-center">
+            <h1>VIEW AVAILABLE GAMES</h1>
         </header>
     );
 }
 
 function BookingListHeader() {
     return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
-            <h1 className="text-2xl font-bold">VIEW YOUR BOOKINGS</h1>
+        <header className="bg-primary text-white text-center">
+            <h1>VIEW YOUR BOOKINGS</h1>
         </header>
     )
 }
