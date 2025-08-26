@@ -1,5 +1,4 @@
 import {useNavigate} from "react-router-dom";
-import './index.css';
 
 function ConsoleForm(){
     const navigate = useNavigate();

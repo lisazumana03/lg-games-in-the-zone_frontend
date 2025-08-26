@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {create} from "../../../service/gameService.js";
-import './index.css';
 
 function GameForm(){
     const navigate = useNavigate();
