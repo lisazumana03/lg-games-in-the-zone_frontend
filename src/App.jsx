@@ -8,7 +8,8 @@ import GameForm from "./pages/admin/products/GameForm.jsx";
 import Home from "./Home.jsx";
 import BookingHistory from "./pages/reservation/BookingHistory.jsx";
 import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
-import './index.css'
+import './index.css';
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 
 function BookingHeader() {
     return (
@@ -105,6 +106,7 @@ function AppContent() {
                     <Route path="/games" element={<GameList />} />
                     <Route path="/register-game" element={<GameForm/>} />
                     <Route path="/register-console" element={<ConsoleForm/>} />
+                    <Route path="/admin" element={<AdminDashboard/>}/>
                 </Routes>
             </main>
             <Footer />
