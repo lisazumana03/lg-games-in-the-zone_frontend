@@ -1,7 +1,9 @@
+import React from 'react';
+
 function RegisterPage() {
     return(
         <div>
-            <form>
+            <form className="m-3 p-3 border border-2 border-dark rounded shadow ">
                 <label> Name (optionally surname): </label>
                 <input type="text" name="name" placeholder="Enter your name" required />
                 <br />

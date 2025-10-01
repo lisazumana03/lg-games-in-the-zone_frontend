@@ -1,7 +1,7 @@
 function LoginPage(){
     return(
         <div>
-            <form>
+            <form className="m-3 p-3 border border-2 border-dark rounded shadow ">
                 <label> Email : </label>
                 <input type="email" name="email" placeholder="Enter your email" required />
                 <br />
