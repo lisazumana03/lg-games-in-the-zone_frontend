@@ -32,11 +32,34 @@ body {
   background-color: #e87400;
 }
 
+.back-btn{
+  margin-top: 20px;
+  background-color: #9d00ff;
+}
+
 .btn-games:hover {
   background-color: #ff8000;
 }
 
 .btn-consoles{
   background-color: #01D5FF;
+}
+
+.glass {
+  background: rgba(16, 159, 0, 0.99); /* transparent white */
+  backdrop-filter: blur(10px);          /* frosted blur */
+  -webkit-backdrop-filter: blur(10px);  /* Safari support */
+  border-radius: 1rem;                  /* rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+}
+
+.glass-neon {
+  background: rgba(93, 0, 255, 0.25); /* semi-transparent neon purple */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 40px 8px #b300ff, 0 0 80px 16px #5a00b0;
+  padding: 3rem 2rem;
 }
 

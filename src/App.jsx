@@ -1,15 +1,18 @@
-import Header from './pages/common/Header'
-import Footer from './pages/common/Footer'
-import GameList from './pages/products/GameList.jsx'
 import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
-import BookingForm from "./pages/reservation/BookingForm.jsx";
-import BookingList from "./pages/reservation/BookingList.jsx";
-import GameForm from "./pages/admin/products/GameForm.jsx";
 import Home from "./Home.jsx";
-import BookingHistory from "./pages/reservation/BookingHistory.jsx";
-import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
 import './index.css';
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
+import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
+import GameForm from "./pages/admin/products/GameForm.jsx";
+import LoginPage from "./pages/authentication/LoginPage.jsx";
+import RegisterPage from './pages/authentication/RegisterPage.jsx';
+import Footer from './pages/common/Footer';
+import Header from './pages/common/Header';
+import ConsoleList from './pages/products/ConsoleList.jsx';
+import GameList from './pages/products/GameList.jsx';
+import BookingForm from "./pages/reservation/BookingForm.jsx";
+import BookingHistory from "./pages/reservation/BookingHistory.jsx";
+import BookingList from "./pages/reservation/BookingList.jsx";
 
 function BookingHeader() {
     return (
@@ -105,8 +108,11 @@ function AppContent() {
                     <Route path="/booking-history" element={<BookingHistory />} />
                     <Route path="/games" element={<GameList />} />
                     <Route path="/register-game" element={<GameForm/>} />
+                    <Route path="/consoles" element={<ConsoleList/>} />
                     <Route path="/register-console" element={<ConsoleForm/>} />
                     <Route path="/admin" element={<AdminDashboard/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/register" element={<RegisterPage/>}/>
                 </Routes>
             </main>
             <Footer />

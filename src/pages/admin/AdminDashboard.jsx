@@ -7,7 +7,7 @@ function AdminDashboard() {
                 Register console
             </Link>
             <Link to="/register-game" className="btn btn-outline-light btn-lg btn-games">
-                View Available Games
+                Register Game
             </Link>
         </div>
     )

@@ -1,6 +1,6 @@
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
-import {create} from "../../service/bookingService.js";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { create } from "../../service/bookingService.js";
 
 function BookingForm() {
     const navigate = useNavigate();
@@ -48,7 +48,7 @@ function BookingForm() {
                     {message}
                 </div>
             )}
-            <form onSubmit={handleSubmit} className="card p-4 shadow w-100" style={{ maxWidth: "500px" }}>
+            <form onSubmit={handleSubmit} className="card p-4 shadow w-100 glass" style={{ maxWidth: "500px" }}>
                 <div className="mb-3">
                     <label> BookingId: </label>
                     <input type="text" name="bookingId" value={form.bookingId} onChange={handleChange} required />
