@@ -8,7 +8,7 @@ function LoginPage(){
                 <label> Password : </label>
                 <input type="password" name="password" placeholder="Enter your password" required />
                 <br />
-                <button type="submit" className="btn-primary bg-red-800"> Login </button>
+                <button type="submit" className="btn-primary "> Login </button>
             </form>
         </div>
     )
