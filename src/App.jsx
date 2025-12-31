@@ -1,121 +1,104 @@
-import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import About from "./About.jsx";
+import ProtectedRoute from './components/PrivateRoute';
+import Contact from "./Contact.jsx";
 import Home from "./Home.jsx";
 import './index.css';
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
-import ConsoleForm from "./pages/admin/products/ConsoleForm.jsx";
-import GameForm from "./pages/admin/products/GameForm.jsx";
+import RegisteredUsers from "./pages/admin/authentication/RegisteredUsers.jsx";
 import LoginPage from "./pages/authentication/LoginPage.jsx";
 import RegisterPage from './pages/authentication/RegisterPage.jsx';
+import UserProfile from "./pages/authentication/UserProfile.jsx";
 import Footer from './pages/common/Footer';
 import Header from './pages/common/Header';
-import ConsoleList from './pages/products/ConsoleList.jsx';
-import GameList from './pages/products/GameList.jsx';
-import BookingForm from "./pages/reservation/BookingForm.jsx";
-import BookingHistory from "./pages/reservation/BookingHistory.jsx";
-import BookingList from "./pages/reservation/BookingList.jsx";
+import ReviewForm from "./pages/feedback/ReviewForm.jsx";
+import ReviewList from "./pages/feedback/ReviewList.jsx";
+import Achievements from "./pages/quiz/Achievements.jsx";
+import CreateQuiz from "./pages/quiz/CreateQuiz.jsx";
+import QuizAttempt from "./pages/quiz/QuizAttempt.jsx";
+import QuizMenu from "./pages/quiz/QuizMenu.jsx";
+import QuizResults from "./pages/quiz/QuizResults.jsx";
+import SubjectForm from "./pages/quiz/SubjectForm.jsx";
+import SubjectList from "./pages/quiz/SubjectList.jsx";
+import authService from './services/authService';
 
-function BookingHeader() {
+function RegisterHeader() {
     return (
         <header className="text-white text-center">
-            <h1>MAKE YOUR BOOKING</h1>
+            <h1 className="text-2xl font-bold">REGISTER AN ACCOUNT</h1>
         </header>
     );
 }
 
-function BookingHistoryHeader() {
+function LoginHeader() {
     return (
-        <header className="bg-primary text-white text-center">
-            <h1 className="text-2xl font-bold">VIEW YOUR BOOKING HISTORY</h1>
+        <header className="text-white text-center">
+            <h1 className="text-2xl font-bold">USER LOGIN</h1>
         </header>
     );
 }
 
-function GameHeader() {
+function AdminDashboardHeader() {
     return (
-        <header className="bg-primary text-white text-center">
-            <h1 className="text-2xl font-bold">REGISTER A GAME</h1>
+        <header className="text-white text-center">
+            <h1 className="text-2xl font-bold">ADMIN DASHBOARD</h1>
         </header>
     );
-}
-
-function ConsoleHeader() {
-    return (
-        <header className="bg-primary text-white text-center">
-            <h1>REGISTER A CONSOLE</h1>
-        </header>
-    )
-}
-
-function GameViewHeader() {
-    return (
-        <header className="bg-primary text-white text-center">
-            <h1>VIEW AVAILABLE GAMES</h1>
-        </header>
-    );
-}
-
-function BookingListHeader() {
-    return (
-        <header className="bg-primary text-white text-center">
-            <h1>VIEW YOUR BOOKINGS</h1>
-        </header>
-    )
-}
-
-function ConsoleListHeader() {
-    return (
-        <header className="bg-red-600 text-white p-6 flex justify-center items-center">
-            <h1> VIEW AVAILABLE CONSOLES </h1>
-        </header>
-    )
 }
 
 function AppContent() {
     const location = useLocation();
-    const isBookingPage = location.pathname === "/make-booking";
-    const isGamingListPage = location.pathname === "/games";
-    const isHomePage = location.pathname === "/";
-    const isBookingListPage = location.pathname === "/bookings";
-    const isBookingHistoryPage = location.pathname === "/booking-history";
-    const isGamePage = location.pathname === "/register-game";
-    const isConsoleListPage = location.pathname === "/consoles";
-    const isConsolePage = location.pathname === "/register-console";
+    const userRole = authService.getUserRole();
+
+    // Redirect based on role
+    if (userRole === "ADMIN" && location.pathname === "/") {
+        return <Navigate to="/admin" replace />;
+    } else if (userRole === "USER" && location.pathname === "/admin") {
+        return <Navigate to="/" replace />;
+    }
+
+    const isHomePage = location.pathname === "/" || location.pathname === "/home";
+    const isAdminPage = location.pathname === "/admin";
+    const isLoginPage = location.pathname === "/login";
+    const isRegisterPage = location.pathname === "/register";
+    const isAuthPage = isLoginPage || isRegisterPage;
 
     return (
         <>
-            {isBookingPage ? (
-                <BookingHeader />
-            ) : isGamingListPage ? (
-                <GameViewHeader />
-            ) : isBookingListPage ? (
-                <BookingListHeader />
-            ) : isGamePage ? (
-                <GameHeader />
-            ) : isBookingHistoryPage ? (
-                <BookingHistoryHeader />
-            ) : isConsolePage ? (
-                <ConsoleHeader />
-            ) : isConsoleListPage ? (
-                    <ConsoleListHeader />
-            ) : (
+            {isLoginPage ? (
+                <LoginHeader />
+            ) : isRegisterPage ? (
+                <RegisterHeader />
+            ) : isAdminPage ? (
+                <AdminDashboardHeader />
+            ) : !isAuthPage ? (
                 <Header showNavigation={isHomePage} />
-            )}
+            ) : null}
             <main>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/make-booking" element={<BookingForm />} />
-                    <Route path="/bookings" element={<BookingList />} />
-                    <Route path="/booking-history" element={<BookingHistory />} />
-                    <Route path="/games" element={<GameList />} />
-                    <Route path="/register-game" element={<GameForm/>} />
-                    <Route path="/consoles" element={<ConsoleList/>} />
-                    <Route path="/register-console" element={<ConsoleForm/>} />
-                    <Route path="/admin" element={<AdminDashboard/>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/register" element={<RegisterPage/>}/>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                    <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                    <Route path="/achievements" element={<ProtectedRoute><Achievements /></ProtectedRoute>} />
+                    <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+                    <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+                    <Route path="/users" element={<ProtectedRoute><RegisteredUsers /></ProtectedRoute>} />
+                    <Route path="/create-review" element={<ProtectedRoute><ReviewForm /></ProtectedRoute>} />
+                    <Route path="/review-list" element={<ProtectedRoute><ReviewList /></ProtectedRoute>} />
+                    <Route path="/quiz" element={<ProtectedRoute><QuizMenu /></ProtectedRoute>} />
+                    <Route path="/quiz/:id" element={<ProtectedRoute><QuizAttempt /></ProtectedRoute>} />
+                    <Route path="/create-quiz" element={<ProtectedRoute><CreateQuiz /></ProtectedRoute>} />
+                    <Route path="/quiz-results/:id" element={<ProtectedRoute><QuizResults /></ProtectedRoute>} />
+                    <Route path="/subject-form" element={<ProtectedRoute><SubjectForm /></ProtectedRoute>} />
+                    <Route path="/subject-form/:id" element={<ProtectedRoute><SubjectForm /></ProtectedRoute>} />
+                    <Route path="/subject-list" element={<ProtectedRoute><SubjectList /></ProtectedRoute>} />
+                    <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+                    <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
+                    <Route path="*" element={<Navigate to={authService.isAuthenticated() ? "/" : "/login"} replace />} />
                 </Routes>
             </main>
-            <Footer />
+            {!isAuthPage && <Footer />}
         </>
     );
 }
